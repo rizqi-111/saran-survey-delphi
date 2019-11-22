@@ -1,0 +1,26 @@
+program P_Veteriner;
+
+uses
+  Forms,
+  U_Utama in 'U_Utama.pas' {FUtama},
+  U_ZFunction_Terbilang in 'U_ZFunction_Terbilang.pas' {ZFunction_Terbilang},
+  U_login in 'U_login.pas' {FLogin},
+  U_DM in 'U_DM.pas' {DM: TDataModule},
+  U_GantiPassword in 'U_GantiPassword.pas' {FGantiPassword},
+  U_01_pelayanan in 'U_01_pelayanan.pas' {F_01_pelayanan},
+  U_01_pelayanan_Periode in 'U_01_pelayanan_Periode.pas' {F_01_pelayanan_Periode},
+  ShockwaveFlashObjects_TLB in 'C:\Users\This\Documents\RAD Studio\7.0\Imports\ShockwaveFlashObjects_TLB.pas' {$R *.res},
+  U_02_pelayanan in 'U_02_pelayanan.pas',
+  saran4 in 'saran4.pas' {F_saran4};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFUtama, FUtama);
+  Application.CreateForm(TZFunction_Terbilang, ZFunction_Terbilang);
+  Application.CreateForm(TF_saran4, saran4);
+  Application.Run;
+end.

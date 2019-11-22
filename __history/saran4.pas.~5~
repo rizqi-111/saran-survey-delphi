@@ -1,0 +1,70 @@
+unit saran4;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
+  StdCtrls, ComCtrls;
+
+type
+  TF_Saran4 = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Image1: TImage;
+    lblWaktu: TLabel;
+    tgl: TDateTimePicker;
+    Panel2: TPanel;
+    GroupBox1: TGroupBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
+    Label6: TLabel;
+    sarantxt: TMemo;
+    Panel3: TPanel;
+    Edit1: TEdit;
+    Panel4: TPanel;
+    Label5: TLabel;
+    Button1: TButton;
+    QM: TZQuery;
+    QMtgl: TDateField;
+    QMbulan: TWideStringField;
+    QMtahun: TWideStringField;
+    QMjam: TTimeField;
+    QMinputd: TDateField;
+    QMinputw: TTimeField;
+    QMno_urut: TIntegerField;
+    QMpuas1: TFloatField;
+    QMtidak_puas1: TFloatField;
+    DS: TDataSource;
+    ZCommand: TZQuery;
+    WideStringField4: TWideStringField;
+    WideStringField5: TWideStringField;
+    FloatField1: TFloatField;
+    WideStringField6: TWideStringField;
+    FloatField2: TFloatField;
+    WideStringField7: TWideStringField;
+    WideStringField8: TWideStringField;
+    DateField1: TDateField;
+    TimeField1: TTimeField;
+    WideStringField9: TWideStringField;
+    WideStringField10: TWideStringField;
+    WideStringField11: TWideStringField;
+    Timer1: TTimer;
+    ZQuery1: TZQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  F_Saran4: TF_Saran4;
+
+implementation
+
+{$R *.dfm}
+
+end.

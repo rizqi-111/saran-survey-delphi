@@ -1,0 +1,112 @@
+unit saran4;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
+  StdCtrls, ComCtrls;
+
+type
+  TF_Saran4 = class(TForm)
+    Button1: TButton;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Image1: TImage;
+    lblWaktu: TLabel;
+    tgl: TDateTimePicker;
+    Panel2: TPanel;
+    GroupBox1: TGroupBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
+    Label6: TLabel;
+    sarantxt: TMemo;
+    Panel3: TPanel;
+    Edit1: TEdit;
+    Panel4: TPanel;
+    Label5: TLabel;
+    Button1: TButton;
+    QM: TZQuery;
+    QMtgl: TDateField;
+    QMbulan: TWideStringField;
+    QMtahun: TWideStringField;
+    QMjam: TTimeField;
+    QMinputd: TDateField;
+    QMinputw: TTimeField;
+    QMno_urut: TIntegerField;
+    QMpuas1: TFloatField;
+    QMtidak_puas1: TFloatField;
+    DS: TDataSource;
+    ZCommand: TZQuery;
+    WideStringField4: TWideStringField;
+    WideStringField5: TWideStringField;
+    FloatField1: TFloatField;
+    WideStringField6: TWideStringField;
+    FloatField2: TFloatField;
+    WideStringField7: TWideStringField;
+    WideStringField8: TWideStringField;
+    DateField1: TDateField;
+    TimeField1: TTimeField;
+    WideStringField9: TWideStringField;
+    WideStringField10: TWideStringField;
+    WideStringField11: TWideStringField;
+    Timer1: TTimer;
+    ZQuery1: TZQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  F_Saran4: TF_Saran4;
+
+implementation
+
+uses U_ZFunction_Terbilang, U_DM, U_Utama;
+
+{$R *.dfm}
+
+procedure TF_Saran4.Button1Click(Sender: TObject);
+begin
+    if sarantxt.Text='' then
+    begin
+    MessageDlg('Kotak Saran Masih Kosong',mtWarning,[mbOK],0);
+    sarantxt.SetFocus;
+    Exit;
+    end;
+    ZQuery1.SQL.Text:='INSERT INTO `saran`(`Isi`, `input_tanggal`, `input_jam`) VALUES ('+
+                      ''+QuotedStr(sarantxt.Text)+','+
+                      ''+QuotedStr(FormatDateTime('yyyy-mm-dd',ZFunction_Terbilang.Ftanggalsekarang))+','+
+                      ''+QuotedStr(FormatDateTime('hh:mm:ss',ZFunction_Terbilang.Fwaktusekarang))+')';
+    ZQuery1.ExecSQL;
+    MessageDlg('Terima Kasih Atas Saran Yang Anda Berikan',mtInformation,[mbOK],0);
+    sarantxt.Clear;
+    sarantxt.SetFocus;
+end;
+
+procedure TF_Saran4.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FUtama.S_01_pelayanan:=0;
+  QM.Close;
+  ZCommand.Close;
+  Action:=caFree;
+end;
+
+procedure TF_Saran4.FormCreate(Sender: TObject);
+begin
+  vtabel:='tbl_01_pelayanan';
+  tgl.Date:=Now;
+  sarantxt.Clear;
+  sarantxt.ScrollBars:=ssVertical;
+end;
+
+
+procedure TF_Saran4.Timer1Timer(Sender: TObject);
+begin
+  lblWaktu.Caption:=FormatDateTime('hh:mm:ss', Now);
+end;
+end.

@@ -1,0 +1,16 @@
+object DM: TDM
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 121
+  Width = 139
+  object ZConnection2: TZConnection
+    Protocol = 'mysql'
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'db_balai_veteriner'
+    User = 'root'
+    Password = 'programmer'
+    Left = 56
+    Top = 32
+  end
+end
